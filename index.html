@@ -7,68 +7,22 @@
     <title>TOP RPS Game</title>
 </head>
 <body>
-    
+    <div id="parent">
+    </div>
+
+    Display the running score:
+    <div id="scoreboard">
+    </div>
+
+    The one who reaches 5 pts first wins!
+    <div id="gameverdict">
+    </div>
+
+    <button id="rock">Rock</button>
+    <button id="paper">Paper</button>
+    <button id="scissors">Scissors</button>
+    <button id="reset">Reset</button>
+    <script src="index.js"></script>
 </body>
 </html>
-<script>
 
-    const choices = ["rock", "paper", "scissors"];
-    let score = { player: 0, computer: 0};
-    let turns = 0;
-
-    let computerSelection; 
-    let playerSelection;
-
-    function computerPlay() {
-        return ComputerSelection = Math.floor(Math.random() * choices.length);
-    };
-
-    function playRound() {
-        computerPlay();
-        do {
-            playerSelection = prompt("Your turn: Rock, Paper or Scissors?").toLowerCase();
-        } while (playerSelection != "rock" && playerSelection != "paper" && playerSelection != "scissors");
-
-        //use difference between the indexes to determine outcome of game
-        const result = choices.indexOf(playerSelection) - computerSelection;
-
-        //convert computerSelection from an index number to a string
-        computerSelection = choices[computerSelection];
-
-        if (result === 1 || result === -2) {
-            score.player += 1;
-            //turns += 1;
-            console.log(playerSelection + " beats " + computerSelection + "! you win!");
-        }
-
-        if (result === -1) {
-            score.computer += 1;
-            //turns += 1;
-            console.log(computerSelection + " beats " + playerSelection + "! You lose!");
-        }
-
-        if (result === 0) {
-            //turns += 1;
-            console.log("It's " + playerSelection + " against " + computerSelection + "! It's a draw! No one wins!");
-        }
-
-        turns += 1;
-        console.log(turns);
-    }
-
-
-    function game() {
-        while (turns < 5) {
-            playRound();
-            console.log("Score: " + score.player + "to " + score.computer);
-        }
-        if (score.player > score.computer) {
-            console.log("You are the winner!");
-        } else if (score.computer < score.player) {
-            console.log("The computer is the winner!");
-        } else {
-            console.log("There is no winner!");
-        }
-    }
-
-    game();
